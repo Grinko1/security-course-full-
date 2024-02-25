@@ -26,8 +26,10 @@ public class MyConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(authorizedHttpRequests -> authorizedHttpRequests.requestMatchers("/public/**").permitAll()
                         .anyRequest().authenticated())
-                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll).
-                build();
+                .exceptionHandling(exceptionHandling -> exceptionHandling
+                        .accessDeniedHandler(((request, response, accessDeniedException) -> accessDeniedException.printStackTrace())))
+                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll).build();
+
     }
     @Bean
     public PasswordEncoder passwordEncoder(){

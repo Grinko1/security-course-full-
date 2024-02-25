@@ -1,4 +1,4 @@
-package security;
+package security.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.MediaType;
