@@ -31,11 +31,11 @@ public class MyConfig {
         http.authorizeHttpRequests(authorizedHttpRequests ->
                         authorizedHttpRequests.requestMatchers("/public/**").permitAll()
                         .anyRequest().authenticated())
-//                .csrf(AbstractHttpConfigurer::disable)
-//                .exceptionHandling(exceptionHandling -> exceptionHandling
-//                        .accessDeniedHandler(((request, response, accessDeniedException) -> accessDeniedException.printStackTrace())))
-//                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll).build()
-                .with(new HexConfigurer(), Customizer.withDefaults());
+                .csrf(AbstractHttpConfigurer::disable)
+                .exceptionHandling(exceptionHandling -> exceptionHandling
+                        .accessDeniedHandler(((request, response, accessDeniedException) -> accessDeniedException.printStackTrace())))
+                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll);
+//                .with(new HexConfigurer(), Customizer.withDefaults());
 
                return   http.build();
 
